@@ -18,7 +18,7 @@ client.login(process.env.TOKEN);
 client.on("message", async (message) => {
   const authClient = await google.auth
     .getClient({
-      keyFile: "./My Project 24258-bdee9607a5bc.json",
+      keyFile: "./endless-sol-226009-9df1057b48c1.js",
       scopes: [
         "https://www.googleapis.com/auth/cloud-platform",
         "https://www.googleapis.com/auth/compute",
