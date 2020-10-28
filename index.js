@@ -3,6 +3,8 @@ const { google } = require("googleapis");
 const McStatus = require("mcstatus");
 const fs = require("fs");
 
+console.log(process.env.TOKEN)
+
 const keyJson = require("./endless-sol-226009-9df1057b48c1");
 
 const keyFileContent = JSON.stringify(keyJson);
@@ -16,7 +18,7 @@ fs.writeFileSync(
     } else {
       console.log("Successfully wrote file");
     }
-  }
+  },
 );
 
 const mineServerConfig = {
