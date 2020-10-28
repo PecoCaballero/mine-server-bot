@@ -13,7 +13,7 @@ client.once("ready", () => {
   console.log("Ready!");
 });
 
-client.login("NzcwOTY3NDg2MDYwNjkxNDU3.X5lRbA.Hq4Ovm8GwTIjO-zVOJWKLXARyNI");
+client.login(process.env.TOKEN);
 
 client.on("message", async (message) => {
   const authClient = await google.auth
