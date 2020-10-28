@@ -3,11 +3,11 @@ const { google } = require("googleapis");
 const McStatus = require("mcstatus");
 const fs = require("fs");
 
-console.log(process.env.TOKEN)
-
 const keyJson = require("./endless-sol-226009-9df1057b48c1");
 
-const keyFileContent = JSON.stringify(keyJson);
+let keyFileContent = JSON.stringify(keyJson);
+
+keyFileContent = keyFileContent.split('\\\\n').join('\\n')
 
 fs.writeFileSync(
   "./endless-sol-226009-9df1057b48c1.json",
