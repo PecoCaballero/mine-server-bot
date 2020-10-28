@@ -1,6 +1,23 @@
 const discord = require("discord.js");
 const { google } = require("googleapis");
 const McStatus = require("mcstatus");
+const fs = require("fs");
+
+const keyJson = require("./endless-sol-226009-9df1057b48c1");
+
+const keyFileContent = JSON.stringify(keyJson);
+
+fs.writeFileSync(
+  "./endless-sol-226009-9df1057b48c1.json",
+  keyFileContent,
+  (err) => {
+    if (err) {
+      console.log("Error writing file", err);
+    } else {
+      console.log("Successfully wrote file");
+    }
+  }
+);
 
 const mineServerConfig = {
   host: "34.73.7.104",
@@ -18,7 +35,7 @@ client.login(process.env.TOKEN);
 client.on("message", async (message) => {
   const authClient = await google.auth
     .getClient({
-      keyFile: "./endless-sol-226009-9df1057b48c1.js",
+      keyFile: "./endless-sol-226009-9df1057b48c1.json",
       scopes: [
         "https://www.googleapis.com/auth/cloud-platform",
         "https://www.googleapis.com/auth/compute",
@@ -42,13 +59,12 @@ client.on("message", async (message) => {
         )
       );
   } else if (message.content === "!mine status") {
-    const computeResponse = await compute.instances
-      .get({
-        project: "endless-sol-226009",
-        auth: authClient,
-        zone: "us-east1-b",
-        instance: "mine-server-1",
-      })
+    const computeResponse = await compute.instances.get({
+      project: "endless-sol-226009",
+      auth: authClient,
+      zone: "us-east1-b",
+      instance: "mine-server-1",
+    });
     if (computeResponse.data.status == "RUNNING") {
       await McStatus.checkStatus(mineServerConfig).then((serverResponse) => {
         message.channel.send(`Status do servidor: ${computeResponse.data.status}
