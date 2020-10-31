@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const { google } = require("googleapis");
 const McStatus = require("mcstatus");
 const fs = require("fs");
-// require('dotenv').config()
+require('dotenv').config()
 const express = require("express");
 
 const port = process.env.PORT || 20;
@@ -42,6 +42,8 @@ server.listen(port, () => {
   client.login(process.env.TOKEN);
 
   client.on("message", async (message) => {
+    const mineRegex = new RegExp("^!mine.*");
+
     const authClient = await google.auth
       .getClient({
         keyFile: "./endless-sol-226009-9df1057b48c1.json",
@@ -117,6 +119,17 @@ Versão: ${serverResponse.version}
 Para ver se o server está ativo basta enviar !mine status
             `);
       });
+    } else if (mineRegex.test(message.content)) {
+      message.channel.send(
+        `
+Comando Inválido.
+Tente os seguintes comandos:
+
+!mine
+!mine status
+!mine start
+!mine stop`
+      );
     }
   });
 });
