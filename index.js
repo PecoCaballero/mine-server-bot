@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const { google } = require("googleapis");
 const McStatus = require("mcstatus");
 const fs = require("fs");
-require('dotenv').config()
+// require('dotenv').config()
 const express = require("express");
 
 const port = process.env.PORT || 20;
