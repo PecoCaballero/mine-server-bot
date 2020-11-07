@@ -29,7 +29,7 @@ server.listen(port, () => {
   );
 
   const mineServerConfig = {
-    host: "35.237.68.187",
+    host: process.env.IP,
     port: 25565,
   };
 
