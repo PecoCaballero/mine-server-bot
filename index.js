@@ -29,7 +29,7 @@ server.listen(port, () => {
   );
 
   const mineServerConfig = {
-    host: "34.73.7.104",
+    host: "35.237.68.187",
     port: 25565,
   };
 
@@ -113,7 +113,6 @@ ${
       await McStatus.checkStatus(mineServerConfig).then((serverResponse) => {
         message.channel.send(`
 ${serverResponse.motd}
-Server IP: ${mineServerConfig.host}
 Versão: ${serverResponse.version}
 
 Para ver se o server está ativo basta enviar !mine status
