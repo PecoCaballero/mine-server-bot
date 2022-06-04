@@ -1,5 +1,5 @@
 # Minecraft Server Manager Discord bot
-==Discord bot to manage minecraft server.== 
+Discord bot to manage minecraft server.
 
 ## Commands: 
 | Command | Description |
